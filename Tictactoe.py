@@ -1,5 +1,6 @@
 import random
 
+#returns the winner
 def isWinner(array):
     noneValue = 0
     for i in range(0,3):
@@ -32,16 +33,16 @@ def gameOver(array):
     else:
         return False
 
-
-
 def boardPrint(array):
     for i in range(0,3):
         print(array[i][0],"|", array[i][1],"|", array[i][2])
     print("\n")
 
 def miniMax(array,depth,maximizer):
+    #checking if the game is over
     over = gameOver(array)
     if(over == True):
+        #evaluation function
         score = 0
         winner = isWinner(array)
         if(winner == "X"):
@@ -51,9 +52,6 @@ def miniMax(array,depth,maximizer):
         else:
             score = 0
         return score
-    
-    
-    
     if(maximizer):
         bestScore = -1000
         for i in range(0,3):
@@ -92,6 +90,7 @@ while(True):
     
     print("X's turn. Complete the position of X")
     
+    #Player turn
     while(True):
         print("Insert the number of row")
         rowInput = int(input())
@@ -116,7 +115,7 @@ while(True):
         break
 
 
-    #Comp turn
+    #AI turn
     bestScore = 1000
     print("O's turn")
     for i in range(0,3):
